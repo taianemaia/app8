@@ -2,8 +2,8 @@ import * as types from '../actions/types';
 
 const INITIAL_STATE = {
     nome: '',
-    email: '',
-    senha: '',
+    email: 'taiane@teste.com',
+    senha: 'taiane',
     erroCadastro: '',
     erroLogin: '',
     loadingLogin: false,

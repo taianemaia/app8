@@ -6,8 +6,8 @@ const INITIAL_STATE = {
     cadastro_resultado_inclusao: '' 
 }
 
-export default(state = INITIAL_STATE, action) => {
-    console.log(action.type);
+export default (state = INITIAL_STATE, action) => {
+    
     switch(action.type) {
         case types.MODIFICA_ADICIONA_CONTATO_EMAIL: 
             return { ...state, adiciona_contato_email: action.payload }
