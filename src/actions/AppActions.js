@@ -27,12 +27,9 @@ export const adicionaContato = email => {
 
                         firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
                             .push({ email, nome: dadosUsuario.nome }) 
-                            .then(() => console.log("SUCESSO"))
-                            .catch(erro => console.log("ERRO " + erro));
-
-                        dispatch({
-                            type: 'actiontest'
-                        })
+                            .then(() => adicionaContatoSucesso(dispatch))
+                            .catch(erro => adicionaContatoErro(erro.message, dispatch) );
+                        
                     } else {
                         dispatch({
                             type: types.ADICIONA_CONTATO_ERRO,
@@ -41,5 +38,26 @@ export const adicionaContato = email => {
                     }
                 }
             );
+    }
+}
+
+const adicionaContatoErro = (erro, dispatch) => {
+    dispatch => ({
+        type: types.ADICIONA_CONTATO_ERRO,
+        payload: erro
+    })
+}
+
+const adicionaContatoSucesso = dispatch => {
+    dispatch({
+        type: types.ADICIONA_CONTATO_SUCESSO,
+        payload: true       
+    })
+}
+
+export const habilitaInclusaoContato = () => {
+    return {
+        type: types.ADICIONA_CONTATO_SUCESSO,
+        payload: false       
     }
 }
